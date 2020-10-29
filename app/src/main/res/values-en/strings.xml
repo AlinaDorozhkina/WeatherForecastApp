@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WeatherForecastApp</string>
+    <string name="choose_city">Choose city</string>
+    <string name="show_button">Show</string>
+    <string name="enter_city">Enter city</string>
+    <string name="pop_city">Favourites</string>
+    <string name="window_speed_checkbox">Wind speed</string>
+    <string name="air_pressure">Air pressure</string>
+    <string name="atmospheric_moisture">Atmospheric moisture</string>
+    <string name="extras">Extra</string>
+</resources>

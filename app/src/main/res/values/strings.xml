@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">WeatherForecastApp</string>
+    <string name="choose_city">Выберите город</string>
+    <string name="show_button">Показать</string>
+    <string name="enter_city">Введите город</string>
+    <string name="pop_city">Избранное</string>
+    <string name="window_speed_checkbox">Скорость ветра</string>
+    <string name="air_pressure">Давление</string>
+    <string name="atmospheric_moisture">Влажность</string>
+    <string name="extras">Хотите узнать?</string>
+    <string-array name="cities">
+        <item>Москва</item>
+        <item>Лондон</item>
+        <item>Рим</item>
+        <item>Барселона</item>
+        <item>Амстердам</item>
+        <item>Лос-Анжелес</item>
+        <item>Токио</item>
+        <item>Бангкок</item>
+        <item>Стокгольм</item>
+        <item>Осло</item>
+        <item>Прага</item>
+    </string-array>
+</resources>
