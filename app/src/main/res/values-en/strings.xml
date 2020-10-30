@@ -9,4 +9,18 @@
     <string name="air_pressure">Air pressure</string>
     <string name="atmospheric_moisture">Atmospheric moisture</string>
     <string name="extras">Extra</string>
+    <string name="info">Weather forecast</string>
+    <string name="city">City</string>
+    <string name="today">Today\'s weather</string>
+    <string name="tomorrow">Data</string>
+    <string name="the_day_after_tomorrow">Data</string>
+    <string name="the_day_after_tomorrow2">Data</string>
+    <string name="day">Data</string>
+    <string name="night">Night</string>
+    <string name="temperature">Temperature</string>
+    <string name="image">Image</string>
+    <string name="degree">Градус</string>
+    <string name="valueWind">Value</string>
+    <string name="valuePressure">Value</string>
+    <string name="valueMoisture">Value</string>
 </resources>

@@ -8,6 +8,20 @@
     <string name="air_pressure">Давление</string>
     <string name="atmospheric_moisture">Влажность</string>
     <string name="extras">Хотите узнать?</string>
+    <string name="info">Прогноз погоды</string>
+    <string name="city">Город</string>
+    <string name="today">Погода на сегодня</string>
+    <string name="tomorrow">дата</string>
+    <string name="the_day_after_tomorrow">дата</string>
+    <string name="the_day_after_tomorrow2">дата</string>
+    <string name="day">День</string>
+    <string name="night">Ночь</string>
+    <string name="temperature">Температура</string>
+    <string name="image">Иконка</string>
+    <string name="degree">Градусы</string>
+    <string name="valueWind">Значение</string>
+    <string name="valuePressure">Значение</string>
+    <string name="valueMoisture">Значение</string>
     <string-array name="cities">
         <item>Москва</item>
         <item>Лондон</item>
