@@ -22,17 +22,11 @@
     <string name="valueWind">Значение</string>
     <string name="valuePressure">Значение</string>
     <string name="valueMoisture">Значение</string>
+    <string name="addingToFavourite">Добавить</string>
+    <string name="weather_description">Облачно с прояснениями</string>
     <string-array name="cities">
         <item>Москва</item>
         <item>Лондон</item>
         <item>Рим</item>
-        <item>Барселона</item>
-        <item>Амстердам</item>
-        <item>Лос-Анжелес</item>
-        <item>Токио</item>
-        <item>Бангкок</item>
-        <item>Стокгольм</item>
-        <item>Осло</item>
-        <item>Прага</item>
     </string-array>
 </resources>

@@ -9,14 +9,17 @@
 
     <LinearLayout
         android:id="@+id/linerPicture"
-        android:layout_width="match_parent"
-        android:layout_height="252dp"
+        android:layout_width="411dp"
+        android:layout_height="106dp"
         android:background="@drawable/background2"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.49"
-        tools:layout_editor_absoluteX="0dp" />
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/textViewInfo"
@@ -26,88 +29,66 @@
         android:text="@string/choose_city"
         android:textColor="@color/black"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/linerPicture"
+        android:layout_margin="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.048" />
-
-    <Spinner
-        android:id="@+id/spinnerCities"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:entries="@array/cities"
-        android:scrollbarStyle="outsideInset"
-        android:layout_marginTop="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/linerPicture"
-        app:layout_constraintTop_toBottomOf="@+id/textViewInfo"
-        app:layout_constraintVertical_bias="0.818"
-        tools:layout_editor_absoluteX="-16dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button_show"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/show_button"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerCities"
-        app:layout_constraintVertical_bias="0.937" />
+        app:layout_constraintTop_toBottomOf="@+id/linerPicture" />
 
     <AutoCompleteTextView
         android:id="@+id/autoCompleteTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="11dp"
         android:hint="@string/enter_city"
-        app:layout_constraintBottom_toTopOf="@+id/spinnerCities"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_margin="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewInfo"
-        app:layout_constraintVertical_bias="0.061" />
-
-    <TextView
-        android:id="@+id/textViewPopularCities"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:fontFamily="@font/alice"
-        android:text="@string/pop_city"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/spinnerCities"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewInfo" />
 
     <TextView
         android:id="@+id/textViewExtra"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/alice"
         android:text="@string/extras"
         android:textColor="@color/black"
         android:textSize="30sp"
-        android:fontFamily="@font/alice"
-        app:layout_constraintBottom_toTopOf="@+id/button_show"
+        android:layout_margin="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linerPicture"
-        app:layout_constraintVertical_bias="0.218" />
+        app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPopularCities">
+
+        <LinearLayout
+            android:id="@+id/linerforFavourites"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
         android:orientation="horizontal"
-        android:layout_marginTop="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/button_show"
+        android:layout_margin="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewExtra"
-        tools:layout_editor_absoluteX="205dp">
+        android:layout_height="wrap_content">
 
         <CheckBox
             android:id="@+id/pressure"
@@ -129,6 +110,20 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/atmospheric_moisture" />
+
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textViewPopularCities"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/alice"
+        android:text="@string/pop_city"
+        android:textColor="@color/black"
+        android:layout_margin="10dp"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_show" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

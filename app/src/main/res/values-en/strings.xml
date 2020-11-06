@@ -23,4 +23,6 @@
     <string name="valueWind">Value</string>
     <string name="valuePressure">Value</string>
     <string name="valueMoisture">Value</string>
+    <string name="addingToFavourite">Add to favourite</string>
+    <string name="weather_description">"Cloudy "</string>
 </resources>

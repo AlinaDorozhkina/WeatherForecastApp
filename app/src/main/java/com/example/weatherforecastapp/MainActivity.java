@@ -7,16 +7,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    private static final String TAG = "tagLog";
+    private static final String TAG = MainActivity.class.getSimpleName();
     TextView autoCompleteTextView;
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) { // вызывется при создании или перезапуске активити, передается бандл, если передаем параметр какой-то
+    protected void onCreate(Bundle savedInstanceState) {
+        // вызывется при создании или перезапуске активити, передается бандл, если передаем параметр какой-то
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -28,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(MainActivity.this, WeatherDescription.class);
-                String value = autoCompleteTextView.getText().toString(); // заглушка
+                String value = autoCompleteTextView.getText().toString();
                 Log.d(TAG, "передача бандла "+ value);
                 intent.putExtra(Keys.KEY, value);
                 startActivity(intent);
@@ -48,7 +52,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStart() { // вызывается после onCreate, активити еще не видима,  после  активити станет видимой
+    protected void onStart() {
+        // вызывается после onCreate, активити еще не видима,  после  активити станет видимой
         super.onStart();
         Toast.makeText(getApplicationContext(), "onStart()", Toast.LENGTH_SHORT).show();
         Log.d(TAG, "onStart");
@@ -111,4 +116,6 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "onDestroy()", Toast.LENGTH_SHORT).show();
         Log.d(TAG, "onDestroy()");
     }
+
+
 }

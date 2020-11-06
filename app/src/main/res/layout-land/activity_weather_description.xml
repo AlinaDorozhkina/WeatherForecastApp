@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/weatherback">
-
+    android:background="@drawable/bluebackground">
 
     <TextView
         android:id="@+id/textViewCity"
@@ -13,92 +12,79 @@
         android:layout_height="wrap_content"
         android:layout_margin="50dp"
         android:text="@string/city"
-        android:textColor="@color/black"
-        android:textSize="30sp"
+        android:textColor="@color/white"
+        android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <ImageButton
+        android:id="@+id/imageButtonFavourites"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:background="#00ffffff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.168"
+        app:layout_constraintStart_toEndOf="@+id/textViewCity"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/btn_star_big_off"
+        android:contentDescription="@null"/>
 
     <TableLayout
-        android:id="@+id/table_weather"
-        android:layout_width="match_parent"
+        android:id="@+id/tableLayout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textViewCity">
 
         <TableRow
-            android:id="@+id/day_temp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textViewDayTemp"
+                android:id="@+id/textViewTemperature"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/day"
-                android:textColor="@color/black"
-                android:textSize="36sp" />
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="40sp" />
 
-            <TextView
-                android:id="@+id/textViewDay_temp_degrees"
+            <ImageView
+                android:id="@+id/imageView2"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/degree" />
-
-            <TextView
-                android:id="@+id/textViewDay_graphic"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/image" />
+                android:layout_height="match_parent"
+                android:contentDescription="@null"
+                tools:srcCompat="@tools:sample/avatars" />
 
         </TableRow>
 
         <TableRow
-            android:id="@+id/night_temp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textViewNight_temp"
+                android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/night"
-                android:textColor="@color/black"
-                android:textSize="36sp" />
+                android:gravity="center"
+                android:text="@string/weather_description"
+                android:textColor="@color/white"
+                android:textSize="22sp" />
 
-            <TextView
-                android:id="@+id/textViewNight_temp_degrees"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/degree" />
-
-            <TextView
-                android:id="@+id/textViewNight_graphic"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/image" />
         </TableRow>
 
     </TableLayout>
-
     <TableLayout
         android:id="@+id/tableloyout_extra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/table_weather">
+        tools:layout_editor_absoluteX="20dp">
 
         <TableRow
             android:id="@+id/raw_air_pressure"
@@ -111,11 +97,11 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/air_pressure"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/textView12"
+                android:id="@+id/textViewPressure"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -133,11 +119,11 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/window_speed_checkbox"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/textView14"
+                android:id="@+id/textViewWindSpeed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -156,11 +142,11 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/atmospheric_moisture"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/textView16"
+                android:id="@+id/textViewMeasure"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -168,6 +154,9 @@
         </TableRow>
 
     </TableLayout>
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
