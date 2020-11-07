@@ -12,8 +12,10 @@
         android:layout_height="wrap_content"
         android:layout_margin="50dp"
         android:text="@string/city"
-        android:textColor="@color/white"
-        android:textSize="40sp"
+        android:fontFamily="@font/alice"
+        android:textColor="@color/yellow"
+        android:textSize="50sp"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -57,7 +59,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:contentDescription="@null"
-                tools:srcCompat="@tools:sample/avatars" />
+                android:layout_weight="1"
+                tools:srcCompat="@drawable/sun" />
 
         </TableRow>
 
@@ -73,7 +76,7 @@
                 android:gravity="center"
                 android:text="@string/weather_description"
                 android:textColor="@color/white"
-                android:textSize="22sp" />
+                android:textSize="25sp" />
 
         </TableRow>
 

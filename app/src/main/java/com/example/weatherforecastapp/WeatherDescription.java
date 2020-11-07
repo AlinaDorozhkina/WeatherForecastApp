@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 public class WeatherDescription extends AppCompatActivity {
     private String value;
     private static final String TAG = WeatherDescription.class.getSimpleName();
+    private static final String INSTANCE_TEMPERATURE="INSTANCE_TEMPERATURE";
     private TextView textViewCity;
     private TextView textViewTemperature;
     private TextView textViewPressure;
@@ -23,6 +25,7 @@ public class WeatherDescription extends AppCompatActivity {
     private ImageButton imageButtonFavourites;
     private boolean flag = true;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +44,9 @@ public class WeatherDescription extends AppCompatActivity {
                 if (flag) {
                     imageButtonFavourites.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), android.R.drawable.btn_star_big_on));
                     flag = false;
+                    Intent intent=new Intent(WeatherDescription.this, MainActivity.class);
+                    intent.putExtra(Keys.KEY, value);
+                    Log.d(TAG, "передано" + value);
                 } else {
                     imageButtonFavourites.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), android.R.drawable.btn_star_big_off));
                     flag = true;
@@ -62,72 +68,28 @@ public class WeatherDescription extends AppCompatActivity {
         }
     }
 
-    @Override
-    protected void onStart() {
-        // вызывается после onCreate, активити еще не видима,  после  активити станет видимой
-        super.onStart();
-        Toast.makeText(getApplicationContext(), "onStart()", Toast.LENGTH_SHORT).show();
-        Log.d(TAG, "onStart");
-    }
 
     @Override
-    protected void onRestoreInstanceState(Bundle saveInstanceState) {
-        // опциональный метод, вызывается после onRestart, чтобы восстановить визуальные элементы активити, на вход принимает бандл - инфо , которую хотим сохранить
-        // если бандл пуст, метод не вызовется
-        super.onRestoreInstanceState(saveInstanceState);
-        Toast.makeText(getApplicationContext(), "Повторный запуск!! - onRestoreInstanceState()", Toast.LENGTH_SHORT).show();
-        Log.d(TAG, "Повторный запуск!! - onRestoreInstanceState()");
-    }
-
-
-    @Override
-    protected void onResume() { // Foreground LifeTime - пользователь видит и взаимодействует с активити
-        super.onResume();
-        Toast.makeText(getApplicationContext(), "onResume()", Toast.LENGTH_SHORT).show();
-        Log.d(TAG, "onResume()");
-    }
-
-    @Override
-    protected void onPause() { //можно освобождать ресурсы,  пользователь видит экран (Foreground LifeTime), в случае мульти-дисплея (две активити н разных дисплеях) не освобождать здесь ресурсы
-        super.onPause();
-        Toast.makeText(getApplicationContext(), "onPause()", Toast.LENGTH_SHORT).show();
-        Log.d(TAG, "onPause()");
-
-    }
-
-    @Override
-    protected void onSaveInstanceState(@NonNull Bundle saveInstanceState) { // не обязательно, что вызовется
+    protected void onSaveInstanceState(@NonNull Bundle saveInstanceState) {
         super.onSaveInstanceState(saveInstanceState);
         Toast.makeText(getApplicationContext(), "onSaveInstanceState()", Toast.LENGTH_SHORT).show();
         Log.d(TAG, "onSaveInstanceState()");
-    }
+        saveInstanceState.putString(INSTANCE_TEMPERATURE, textViewTemperature.getText().toString());
 
+    }
     @Override
-    protected void onStop() { // освобождаем нужные ресурсы, пользователь не видит экран, если возвращается к этой активити - вызовется метод onRestart, потом onStart
-        super.onStop();
-        Toast.makeText(getApplicationContext(), "onStop()", Toast.LENGTH_SHORT).show();
-        Log.d(TAG, "onStop()");
+    protected void onRestoreInstanceState(Bundle saveInstanceState) {
+        super.onRestoreInstanceState(saveInstanceState);
+        String temp = saveInstanceState.getString(INSTANCE_TEMPERATURE);
+        textViewTemperature.setText(temp);
     }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Toast.makeText(getApplicationContext(), "onRestart()", Toast.LENGTH_SHORT).show();
-        Log.d(TAG, "onRestart");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Toast.makeText(getApplicationContext(), "onDestroy()", Toast.LENGTH_SHORT).show();
-        Log.d(TAG, "onDestroy()");
-    }
-
 
     private static String showRandomValue() {// временны вариант рандомных показателей
         int random = (int) (Math.random() * 30);
         return String.valueOf(random);
     }
+
+
 }
 
 

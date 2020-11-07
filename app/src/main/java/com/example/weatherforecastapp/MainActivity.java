@@ -1,6 +1,7 @@
 package com.example.weatherforecastapp;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -15,7 +16,8 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
-    TextView autoCompleteTextView;
+    private TextView autoCompleteTextView;
+    private static  final int REQUEST_ACCESS_TYPE=1;
 
 
     @Override
@@ -49,7 +51,11 @@ public class MainActivity extends AppCompatActivity {
         }
         Toast.makeText(getApplicationContext(), instanceState + " - onCreate()", Toast.LENGTH_SHORT).show();
         Log.d(TAG, "on create");
+
+
     }
+
+
 
     @Override
     protected void onStart() {
@@ -64,16 +70,12 @@ public class MainActivity extends AppCompatActivity {
         // опциональный метод, вызывается после onRestart, чтобы восстановить визуальные элементы активити, на вход принимает бандл - инфо , которую хотим сохранить
         // если бандл пуст, метод не вызовется
         super.onRestoreInstanceState(saveInstanceState);
+
         Toast.makeText(getApplicationContext(), "Повторный запуск!! - onRestoreInstanceState()", Toast.LENGTH_SHORT).show();
         Log.d(TAG, "Повторный запуск!! - onRestoreInstanceState()");
     }
 
 
-    public void showWeatherForecast(View view) {
-        Intent intent = new Intent(this, WeatherDescription.class);
-        startActivity(intent);
-        Log.d(TAG, "открытие новой активити");
-    }
 
     @Override
     protected void onResume() { // Foreground LifeTime - пользователь видит и взаимодействует с активити

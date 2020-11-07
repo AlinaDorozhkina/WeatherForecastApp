@@ -5,14 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back">
+    android:background="@drawable/bluedark">
 
     <LinearLayout
         android:id="@+id/linerLayoutPicture"
-        android:layout_width="451dp"
-        android:layout_height="201dp"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
         android:layout_margin="20dp"
-        android:background="@drawable/background2"
+        android:background="@drawable/picallweather2"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/linearLayoutCity"
@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/alice"
             android:text="@string/choose_city"
-            android:textColor="@color/black"
+            android:textColor="@color/yellow"
 
             android:textSize="30sp">
 
@@ -49,7 +49,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:hint="@string/enter_city">
+            android:hint="@string/enter_city"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white">
 
         </AutoCompleteTextView>
 
@@ -60,69 +62,82 @@
             android:layout_marginTop="30dp"
             android:fontFamily="@font/alice"
             android:text="@string/pop_city"
-            android:textColor="@color/black"
+            android:textColor="@color/yellow"
             android:textSize="30sp">
 
         </TextView>
-
-        <Spinner
-            android:id="@+id/spinnerCities"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:entries="@array/cities"
-            android:scrollbarStyle="outsideInset">
-
-        </Spinner>
 
 
     </LinearLayout>
 
     <TextView
         android:id="@+id/textViewExtra"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="20dp"
+        android:layout_margin="20dp"
         android:fontFamily="@font/alice"
         android:text="@string/extras"
-        android:textColor="@color/black"
+        android:textColor="@color/yellow"
         android:textSize="30sp"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/LinerLayoutCheckBox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@id/linearLayoutCity"
-        app:layout_constraintTop_toBottomOf="@id/linerLayoutPicture">
+        app:layout_constraintTop_toBottomOf="@id/linerLayoutPicture"
+        app:layout_constraintVertical_bias="0.0">
 
     </TextView>
 
     <LinearLayout
         android:id="@+id/LinerLayoutCheckBox"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toTopOf="@id/button_show"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/linearLayoutCity"
-        app:layout_constraintTop_toBottomOf="@+id/textViewExtra">
+        app:layout_constraintStart_toEndOf="@+id/linearLayoutCity">
 
         <CheckBox
             android:id="@+id/pressure"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/air_pressure" />
+            android:text="@string/air_pressure"
+            android:textColor="@color/white" />
 
         <CheckBox
             android:id="@+id/speed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/window_speed_checkbox" />
+            android:text="@string/window_speed_checkbox"
+            android:textColor="@color/white" />
 
         <CheckBox
             android:id="@+id/moisture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/atmospheric_moisture" />
+            android:text="@string/atmospheric_moisture"
+            android:textColor="@color/white" />
     </LinearLayout>
+    <Button
+        android:id="@+id/button_show"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/show_button"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/alice"
+        android:backgroundTint="@color/blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@id/linearLayoutCity"
+
+        app:layout_constraintTop_toBottomOf="@+id/LinerLayoutCheckBox">
+
+    </Button>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
