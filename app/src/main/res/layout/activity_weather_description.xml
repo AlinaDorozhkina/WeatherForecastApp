@@ -12,13 +12,13 @@
         android:id="@+id/textViewCity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="50dp"
-        android:layout_marginTop="24dp"
+        android:layout_margin="@dimen/common_margin_big"
+        android:layout_marginTop="@dimen/common_margin"
         android:gravity="center"
         android:text="@string/city"
         android:textColor="@color/yellow"
         android:fontFamily="@font/alice"
-        android:textSize="50sp"
+        android:textSize="@dimen/text_size_big"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -28,7 +28,7 @@
         android:id="@+id/imageButtonFavourites"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="@dimen/common_margin_big"
         android:background="#00ffffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.168"
@@ -41,7 +41,7 @@
         android:id="@+id/tableLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="@dimen/common_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textViewCity">
@@ -57,7 +57,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:textColor="@color/white"
-                android:textSize="40sp" />
+                android:textSize="@dimen/text_size_big" />
 
             <ImageView
                 android:id="@+id/imageViewWeatherGraphic"
@@ -82,7 +82,7 @@
                 android:fontFamily="@font/alice"
                 android:text="@string/weather_description"
                 android:textColor="@color/white"
-                android:textSize="22sp" />
+                android:textSize="@dimen/text_size_average" />
 
         </TableRow>
 
@@ -92,7 +92,7 @@
         android:id="@+id/tableloyout_extra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="@dimen/common_margin"
         app:layout_constraintTop_toBottomOf="@id/tableLayout"
         tools:layout_editor_absoluteX="20dp">
 
@@ -108,14 +108,14 @@
                 android:layout_weight="1"
                 android:text="@string/air_pressure"
                 android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:textSize="@dimen/text_size_small" />
 
             <TextView
                 android:id="@+id/textViewPressureValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="20sp"
+                android:textSize="@dimen/text_size_small"
                 android:textColor="@color/white" />
         </TableRow>
 
@@ -131,7 +131,7 @@
                 android:layout_weight="1"
                 android:text="@string/window_speed_checkbox"
                 android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:textSize="@dimen/text_size_small" />
 
             <TextView
                 android:id="@+id/textViewWindSpeedValue"
@@ -139,7 +139,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:layout_weight="1"
-                android:textSize="20sp"/>
+                android:textSize="@dimen/text_size_small"/>
         </TableRow>
 
         <TableRow
@@ -154,7 +154,7 @@
                 android:layout_weight="1"
                 android:text="@string/atmospheric_moisture"
                 android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:textSize="@dimen/text_size_small" />
 
             <TextView
                 android:id="@+id/textViewMoistureValue"
@@ -162,7 +162,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textColor="@color/white"
-                android:textSize="20sp"/>
+                android:textSize="@dimen/text_size_small"/>
         </TableRow>
 
     </TableLayout>

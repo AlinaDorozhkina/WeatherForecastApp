@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
+
     private TextView autoCompleteTextView;
     private CheckBox pressure;
     private CheckBox speed;
