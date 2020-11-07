@@ -23,7 +23,7 @@
     <string name="valuePressure">Значение</string>
     <string name="valueMoisture">Значение</string>
     <string name="addingToFavourite">Добавить</string>
-    <string name="weather_description">Облачно с прояснениями</string>
+    <string name="weather_description">Ясно</string>
     <string name="moscow">Москва</string>
     <string name="hint_choose_city">Выберите город</string>
     <string-array name="cities">

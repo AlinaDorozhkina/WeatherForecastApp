@@ -70,13 +70,13 @@ public class WeatherDescription extends AppCompatActivity {
             textViewCity.setText(city);
             textViewTemperature.setText(showRandomValue() + " °");
             if (pressure){
-                textViewPressureValue.setText(showRandomValue());
+                textViewPressureValue.setText(showRandomValue()  + " мм рт.ст");
             }
             if (speed){
-                textViewWindSpeedValue.setText(showRandomValue());
+                textViewWindSpeedValue.setText(showRandomValue() + " м/c");
             }
             if (moisture){
-                textViewMoistureValue.setText(showRandomValue());
+                textViewMoistureValue.setText(showRandomValue()+ " %");
             }
         } else {
             Log.d(TAG, "value is null");
