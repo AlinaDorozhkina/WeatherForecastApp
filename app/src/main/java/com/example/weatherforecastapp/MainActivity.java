@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,7 +18,9 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
     private TextView autoCompleteTextView;
-    private static  final int REQUEST_ACCESS_TYPE=1;
+    private CheckBox pressure;
+    private CheckBox speed;
+    private CheckBox moisture;
 
 
     @Override
@@ -26,18 +29,34 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button button_show = findViewById(R.id.button_show);
-
         autoCompleteTextView=findViewById(R.id.autoCompleteTextView);
+        pressure=findViewById(R.id.pressure);
+        speed=findViewById(R.id.speed);
+        moisture=findViewById(R.id.moisture);
 
+        Button button_show = findViewById(R.id.button_show);
         button_show.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this, WeatherDescription.class);
-                String value = autoCompleteTextView.getText().toString();
-                Log.d(TAG, "передача бандла "+ value);
-                intent.putExtra(Keys.KEY, value);
-                startActivity(intent);
+                Intent intent = new Intent(MainActivity.this, WeatherDescription.class);
+
+                String value = autoCompleteTextView.getText().toString().trim();
+                if (!value.isEmpty()) {
+                    Log.d(TAG, "передача бандла " + value);
+                    intent.putExtra(Keys.KEY, value);
+                    if (pressure.isChecked()){
+                        intent.putExtra("pressure", true);
+                    }
+                    if (speed.isChecked()){
+                        intent.putExtra("speed", true);
+                    }
+                    if (moisture.isChecked()){
+                        intent.putExtra("moisture", true);
+                    }
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getApplicationContext(), R.string.hint_choose_city, Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

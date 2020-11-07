@@ -26,4 +26,5 @@
     <string name="addingToFavourite">Add to favourite</string>
     <string name="weather_description">"Cloudy "</string>
     <string name="moscow">Moscow</string>
+    <string name="hint_choose_city">Choose city</string>
 </resources>

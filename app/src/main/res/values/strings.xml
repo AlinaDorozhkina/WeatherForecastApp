@@ -25,6 +25,7 @@
     <string name="addingToFavourite">Добавить</string>
     <string name="weather_description">Облачно с прояснениями</string>
     <string name="moscow">Москва</string>
+    <string name="hint_choose_city">Выберите город</string>
     <string-array name="cities">
         <item>Москва</item>
         <item>Лондон</item>

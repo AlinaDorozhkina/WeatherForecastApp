@@ -14,14 +14,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class WeatherDescription extends AppCompatActivity {
-    private String value;
+    private String city;
+    private TextView textViewPressureValue;
+    private TextView textViewWindSpeedValue;
+    private TextView textViewMoistureValue;
     private static final String TAG = WeatherDescription.class.getSimpleName();
     private static final String INSTANCE_TEMPERATURE="INSTANCE_TEMPERATURE";
+    private static final String INSTANCE_PRESSURE = "INSTANCE_PRESSURE";
+    private static final String INSTANCE_SPEED = "INSTANCE_SPEED";
+    private static final String INSTANCE_MOISTURE = "INSTANCE_MOISTURE";
     private TextView textViewCity;
     private TextView textViewTemperature;
-    private TextView textViewPressure;
-    private TextView textViewWindSpeed;
-    private TextView textViewMeasure;
     private ImageButton imageButtonFavourites;
     private boolean flag = true;
 
@@ -33,10 +36,10 @@ public class WeatherDescription extends AppCompatActivity {
 
         textViewCity = findViewById(R.id.textViewCity);
         textViewTemperature = findViewById(R.id.textViewTemperature);
-        textViewPressure = findViewById(R.id.textViewPressure);
-        textViewWindSpeed = findViewById(R.id.textViewWindSpeed);
-        textViewMeasure = findViewById(R.id.textViewMeasure);
         imageButtonFavourites = findViewById(R.id.imageButtonFavourites);
+        textViewPressureValue= findViewById(R.id.textViewPressureValue);
+        textViewWindSpeedValue=findViewById(R.id.textViewWindSpeedValue);
+        textViewMoistureValue=findViewById(R.id.textViewMoistureValue);
 
         imageButtonFavourites.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,8 +48,8 @@ public class WeatherDescription extends AppCompatActivity {
                     imageButtonFavourites.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), android.R.drawable.btn_star_big_on));
                     flag = false;
                     Intent intent=new Intent(WeatherDescription.this, MainActivity.class);
-                    intent.putExtra(Keys.KEY, value);
-                    Log.d(TAG, "передано" + value);
+                    intent.putExtra(Keys.KEY, city);
+                    Log.d(TAG, "передано" + city);
                 } else {
                     imageButtonFavourites.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), android.R.drawable.btn_star_big_off));
                     flag = true;
@@ -56,13 +59,25 @@ public class WeatherDescription extends AppCompatActivity {
 
         // Intent intent = getIntent();
         // String value = intent.getStringExtra(Keys.KEY);
-        value = getIntent().getStringExtra(Keys.KEY);
+        city = getIntent().getStringExtra(Keys.KEY);
+        boolean pressure = getIntent().getBooleanExtra("pressure", false);
+        boolean speed=getIntent().getBooleanExtra("speed", false);
+        boolean moisture=getIntent().getBooleanExtra("moisture", false);
 
-        if (value != null) {
-            Log.d(TAG, "получено значение " + value);
-            textViewCity.setText(value);
+
+        if (city != null) {
+            Log.d(TAG, "получено значение " + city);
+            textViewCity.setText(city);
             textViewTemperature.setText(showRandomValue() + " °");
-            //textViewNight_temp_degrees.setText(showRandomValue());
+            if (pressure){
+                textViewPressureValue.setText(showRandomValue());
+            }
+            if (speed){
+                textViewWindSpeedValue.setText(showRandomValue());
+            }
+            if (moisture){
+                textViewMoistureValue.setText(showRandomValue());
+            }
         } else {
             Log.d(TAG, "value is null");
         }
@@ -75,6 +90,9 @@ public class WeatherDescription extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "onSaveInstanceState()", Toast.LENGTH_SHORT).show();
         Log.d(TAG, "onSaveInstanceState()");
         saveInstanceState.putString(INSTANCE_TEMPERATURE, textViewTemperature.getText().toString());
+        saveInstanceState.putString(INSTANCE_SPEED, textViewWindSpeedValue.getText().toString());
+        saveInstanceState.putString(INSTANCE_PRESSURE, textViewPressureValue.getText().toString());
+        saveInstanceState.putString(INSTANCE_MOISTURE, textViewMoistureValue.getText().toString());
 
     }
     @Override
@@ -82,6 +100,9 @@ public class WeatherDescription extends AppCompatActivity {
         super.onRestoreInstanceState(saveInstanceState);
         String temp = saveInstanceState.getString(INSTANCE_TEMPERATURE);
         textViewTemperature.setText(temp);
+        textViewMoistureValue.setText(saveInstanceState.getString(INSTANCE_MOISTURE));
+        textViewWindSpeedValue.setText(saveInstanceState.getString(INSTANCE_SPEED));
+        textViewPressureValue.setText(saveInstanceState.getString(INSTANCE_PRESSURE));
     }
 
     private static String showRandomValue() {// временны вариант рандомных показателей

@@ -55,7 +55,7 @@
                 android:textSize="40sp" />
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/imageViewWeatherGraphic"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:contentDescription="@null"
@@ -69,7 +69,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/textViewDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -86,6 +86,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
+        app:layout_constraintTop_toBottomOf="@id/tableLayout"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="20dp">
 
@@ -95,7 +96,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textView13"
+                android:id="@+id/textViewPressure"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -104,11 +105,12 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/textViewPressure"
+                android:id="@+id/textViewPressureValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/valueMoisture" />
+                android:textSize="20sp"
+                android:textColor="@color/white" />
         </TableRow>
 
         <TableRow
@@ -117,7 +119,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textView15"
+                android:id="@+id/textViewSpeed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -126,21 +128,21 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/textViewWindSpeed"
+                android:id="@+id/textViewWindSpeedValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-
-                android:text="@string/valueWind" />
+                android:textSize="20sp"
+                android:textColor="@color/white" />
         </TableRow>
 
         <TableRow
-            android:id="@+id/raw_measure"
+            android:id="@+id/raw_moisture"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textView17"
+                android:id="@+id/textViewMoisture"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -149,11 +151,12 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/textViewMeasure"
+                android:id="@+id/textViewMoistureValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/valueMoisture" />
+                android:textSize="20sp"
+                android:textColor="@color/white" />
         </TableRow>
 
     </TableLayout>
