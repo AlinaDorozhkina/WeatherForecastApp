@@ -12,6 +12,7 @@
         android:background="@drawable/bluedark"
         >
         <LinearLayout
+            android:id="@+id/liner_main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -118,7 +119,7 @@
                 android:textSize="@dimen/text_size_small"
                 android:layout_marginTop="@dimen/common_margin"
                 android:fontFamily="@font/alice"
-                android:backgroundTint="@color/blue"
+                android:backgroundTint="@color/blues"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -140,21 +141,18 @@
                 app:layout_constraintTop_toBottomOf="@+id/button_show">
 
             </TextView>
-            <Button
-                android:id="@+id/buttonMoscow"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/moscow"
-                android:fontFamily="@font/alice"
-                android:textSize="@dimen/text_size_small"
-                android:backgroundTint="@color/blue"
-                />
 
+                <Button
+                    android:id="@+id/buttonMoscow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/moscow"
+                    android:fontFamily="@font/alice"
+                    android:textSize="@dimen/text_size_small"
+                    android:backgroundTint="@color/blues"
+                    />
 
-
-
-        </LinearLayout>
-
+            </LinearLayout>
 
     </ScrollView>
 

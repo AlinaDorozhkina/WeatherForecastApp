@@ -1,27 +1,29 @@
 package com.example.weatherforecastapp;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.Spinner;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
+    private static final int REQUEST_CODE = 1;
 
     private TextView autoCompleteTextView;
     private CheckBox pressure;
     private CheckBox speed;
     private CheckBox moisture;
+    private LinearLayout liner_main;
 
 
     @Override
@@ -30,10 +32,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        autoCompleteTextView=findViewById(R.id.autoCompleteTextView);
-        pressure=findViewById(R.id.pressure);
-        speed=findViewById(R.id.speed);
-        moisture=findViewById(R.id.moisture);
+        autoCompleteTextView = findViewById(R.id.autoCompleteTextView);
+        pressure = findViewById(R.id.pressure);
+        speed = findViewById(R.id.speed);
+        moisture = findViewById(R.id.moisture);
+        liner_main = findViewById(R.id.liner_main);
 
         Button button_show = findViewById(R.id.button_show);
         button_show.setOnClickListener(new View.OnClickListener() {
@@ -45,16 +48,17 @@ public class MainActivity extends AppCompatActivity {
                 if (!value.isEmpty()) {
                     Log.d(TAG, "передача бандла " + value);
                     intent.putExtra(Keys.KEY, value);
-                    if (pressure.isChecked()){
+                    if (pressure.isChecked()) {
                         intent.putExtra("pressure", true);
                     }
-                    if (speed.isChecked()){
+                    if (speed.isChecked()) {
                         intent.putExtra("speed", true);
                     }
-                    if (moisture.isChecked()){
+                    if (moisture.isChecked()) {
                         intent.putExtra("moisture", true);
                     }
-                    startActivity(intent);
+                    //startActivity(intent);
+                    startActivityForResult(intent, REQUEST_CODE);
                 } else {
                     Toast.makeText(getApplicationContext(), R.string.hint_choose_city, Toast.LENGTH_SHORT).show();
                 }
@@ -76,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     @Override
     protected void onStart() {
         // вызывается после onCreate, активити еще не видима,  после  активити станет видимой
@@ -94,7 +97,6 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "Повторный запуск!! - onRestoreInstanceState()", Toast.LENGTH_SHORT).show();
         Log.d(TAG, "Повторный запуск!! - onRestoreInstanceState()");
     }
-
 
 
     @Override
@@ -137,6 +139,32 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         Toast.makeText(getApplicationContext(), "onDestroy()", Toast.LENGTH_SHORT).show();
         Log.d(TAG, "onDestroy()");
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode != REQUEST_CODE) {
+            Log.d(TAG, "requestCode != REQUEST_CODE " + requestCode);
+            super.onActivityResult(requestCode, resultCode, data);
+            return;
+        }
+
+        if (resultCode == RESULT_OK) {
+            Log.d(TAG, " получено значение из другой активити " + data.getStringExtra("favourite_city"));
+            Button button = new Button(this);
+            button.setText(data.getStringExtra("favourite_city"));
+            int backgroundColor = ContextCompat.getColor(this, R.color.blues);
+            int textColor = ContextCompat.getColor(this, R.color.white);
+            button.setBackgroundColor(backgroundColor);
+            button.setTextColor(textColor);
+            //button.setTextSize(R.dimen.text_size_average);
+            button.setTextColor(textColor);
+            Typeface typeface=getResources().getFont(R.font.alike);
+            button.setTypeface(typeface);
+            liner_main.addView(button);
+
+
+        }
     }
 
 

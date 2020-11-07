@@ -26,7 +26,7 @@ public class WeatherDescription extends AppCompatActivity {
     private TextView textViewCity;
     private TextView textViewTemperature;
     private ImageButton imageButtonFavourites;
-    private boolean flag = true;
+    private boolean flag = false;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -44,15 +44,15 @@ public class WeatherDescription extends AppCompatActivity {
         imageButtonFavourites.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (flag) {
+                if (!flag) {
                     imageButtonFavourites.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), android.R.drawable.btn_star_big_on));
-                    flag = false;
-                    Intent intent=new Intent(WeatherDescription.this, MainActivity.class);
-                    intent.putExtra(Keys.KEY, city);
-                    Log.d(TAG, "передано" + city);
+                    flag = true;
+                   // Intent intent=new Intent(WeatherDescription.this, MainActivity.class);
+                   // intent.putExtra(Keys.KEY, city);
+                    //Log.d(TAG, "передано" + city);
                 } else {
                     imageButtonFavourites.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), android.R.drawable.btn_star_big_off));
-                    flag = true;
+                    flag = false;
                 }
             }
         });
@@ -110,7 +110,17 @@ public class WeatherDescription extends AppCompatActivity {
         return String.valueOf(random);
     }
 
-
+    @Override
+    public void onBackPressed() {
+        if(flag){
+            Intent intentResult = new Intent(WeatherDescription.this, MainActivity.class);
+            intentResult.putExtra("favourite_city", city);
+            setResult(RESULT_OK, intentResult);
+            Log.d(TAG, "передано " + city);
+            finish();
+        }
+        super.onBackPressed();
+    }
 }
 
 
