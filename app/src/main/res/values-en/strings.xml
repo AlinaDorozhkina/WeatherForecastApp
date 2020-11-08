@@ -27,4 +27,7 @@
     <string name="weather_description">"Cloudy "</string>
     <string name="moscow">Moscow</string>
     <string name="hint_choose_city">Choose city</string>
+    <string name="datailed">Подробнее</string>
+    <string name="web_weather">https://weather.com/</string>
+    <string name="web_open_button">Go</string>
 </resources>

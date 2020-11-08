@@ -26,6 +26,9 @@
     <string name="weather_description">Ясно</string>
     <string name="moscow">Москва</string>
     <string name="hint_choose_city">Выберите город</string>
+    <string name="datailed">Подробнее</string>
+    <string name="web_weather">https://weather.com/</string>
+    <string name="web_open_button">Перейти</string>
     <string-array name="cities">
         <item>Москва</item>
         <item>Лондон</item>

@@ -6,9 +6,11 @@ import androidx.core.content.ContextCompat;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +20,8 @@ public class WeatherDescription extends AppCompatActivity {
     private TextView textViewPressureValue;
     private TextView textViewWindSpeedValue;
     private TextView textViewMoistureValue;
+    private TextView textWebSite;
+    private Button buttonWebSearch;
     private static final String TAG = WeatherDescription.class.getSimpleName();
     private static final String INSTANCE_TEMPERATURE="INSTANCE_TEMPERATURE";
     private static final String INSTANCE_PRESSURE = "INSTANCE_PRESSURE";
@@ -40,6 +44,8 @@ public class WeatherDescription extends AppCompatActivity {
         textViewPressureValue= findViewById(R.id.textViewPressureValue);
         textViewWindSpeedValue=findViewById(R.id.textViewWindSpeedValue);
         textViewMoistureValue=findViewById(R.id.textViewMoistureValue);
+        textWebSite=findViewById(R.id.textWebSite);
+        buttonWebSearch=findViewById(R.id.buttonWebSearch);
 
         imageButtonFavourites.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,6 +87,16 @@ public class WeatherDescription extends AppCompatActivity {
         } else {
             Log.d(TAG, "value is null");
         }
+
+        buttonWebSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url =textWebSite.getText().toString();
+                Uri uri=Uri.parse(url);
+                Intent intent =new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
     }
 
 

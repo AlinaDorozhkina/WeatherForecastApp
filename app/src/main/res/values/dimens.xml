@@ -5,4 +5,5 @@
     <dimen name="text_size_big">40sp</dimen>
     <dimen name="text_size_average">30sp</dimen>
     <dimen name="text_size_small">20sp</dimen>
+    <dimen name="text_size_super_small">15sp</dimen>
 </resources>
