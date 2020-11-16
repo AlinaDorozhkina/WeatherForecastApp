@@ -8,17 +8,30 @@
     <string name="air_pressure">Давление</string>
     <string name="atmospheric_moisture">Влажность</string>
     <string name="extras">Хотите узнать?</string>
+    <string name="info">Прогноз погоды</string>
+    <string name="city">Город</string>
+    <string name="today">Погода на сегодня</string>
+    <string name="tomorrow">дата</string>
+    <string name="the_day_after_tomorrow">дата</string>
+    <string name="the_day_after_tomorrow2">дата</string>
+    <string name="day">День</string>
+    <string name="night">Ночь</string>
+    <string name="temperature">Температура</string>
+    <string name="image">Иконка</string>
+    <string name="degree">Градусы</string>
+    <string name="valueWind">Значение</string>
+    <string name="valuePressure">Значение</string>
+    <string name="valueMoisture">Значение</string>
+    <string name="addingToFavourite">Добавить</string>
+    <string name="weather_description">Ясно</string>
+    <string name="moscow">Москва</string>
+    <string name="hint_choose_city">Выберите город</string>
+    <string name="datailed">Подробнее</string>
+    <string name="web_weather">https://weather.com/</string>
+    <string name="web_open_button">Перейти</string>
     <string-array name="cities">
         <item>Москва</item>
         <item>Лондон</item>
         <item>Рим</item>
-        <item>Барселона</item>
-        <item>Амстердам</item>
-        <item>Лос-Анжелес</item>
-        <item>Токио</item>
-        <item>Бангкок</item>
-        <item>Стокгольм</item>
-        <item>Осло</item>
-        <item>Прага</item>
     </string-array>
 </resources>

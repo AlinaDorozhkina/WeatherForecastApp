@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/liner_main"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bluebackground"
+    android:orientation="horizontal"
+    tools:context=".MainActivity"
+    android:baselineAligned="false">
+
+    <fragment
+        android:id="@+id/main_functions_fragment"
+        android:name="com.example.weatherforecastapp.MainFunctionsFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        tools:layout="@layout/layout_main_functions">
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/favourites_cities_fragment"
+        android:name="com.example.weatherforecastapp.FavouritesFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        tools:layout="@layout/fragment_favourites">
+
+    </fragment>
+
+</LinearLayout>
+
+
