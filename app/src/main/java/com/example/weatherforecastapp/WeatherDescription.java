@@ -3,8 +3,10 @@ package com.example.weatherforecastapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,14 +18,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class WeatherDescription extends AppCompatActivity {
+    private ExtraDataFragment extraDataFragment;
     private String city;
     private TextView textViewPressureValue;
     private TextView textViewWindSpeedValue;
     private TextView textViewMoistureValue;
     private TextView textWebSite;
-    private Button buttonWebSearch;
     private static final String TAG = WeatherDescription.class.getSimpleName();
-    private static final String INSTANCE_TEMPERATURE="INSTANCE_TEMPERATURE";
+    private static final String INSTANCE_TEMPERATURE = "INSTANCE_TEMPERATURE";
     private static final String INSTANCE_PRESSURE = "INSTANCE_PRESSURE";
     private static final String INSTANCE_SPEED = "INSTANCE_SPEED";
     private static final String INSTANCE_MOISTURE = "INSTANCE_MOISTURE";
@@ -32,7 +34,10 @@ public class WeatherDescription extends AppCompatActivity {
     private ImageButton imageButtonFavourites;
     private boolean flag = false;
 
-    @SuppressLint("SetTextI18n")
+    private FragmentManager manager;
+    private FragmentTransaction transaction;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,11 +46,11 @@ public class WeatherDescription extends AppCompatActivity {
         textViewCity = findViewById(R.id.textViewCity);
         textViewTemperature = findViewById(R.id.textViewTemperature);
         imageButtonFavourites = findViewById(R.id.imageButtonFavourites);
-        textViewPressureValue= findViewById(R.id.textViewPressureValue);
-        textViewWindSpeedValue=findViewById(R.id.textViewWindSpeedValue);
-        textViewMoistureValue=findViewById(R.id.textViewMoistureValue);
-        textWebSite=findViewById(R.id.textWebSite);
-        buttonWebSearch=findViewById(R.id.buttonWebSearch);
+        // textViewPressureValue = findViewById(R.id.textViewPressureValue);
+        // textViewWindSpeedValue = findViewById(R.id.textViewWindSpeedValue);
+        //  textViewMoistureValue = findViewById(R.id.textViewMoistureValue);
+        textWebSite = findViewById(R.id.textWebSite);
+        Button buttonWebSearch = findViewById(R.id.buttonWebSearch);
 
         imageButtonFavourites.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,9 +58,6 @@ public class WeatherDescription extends AppCompatActivity {
                 if (!flag) {
                     imageButtonFavourites.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), android.R.drawable.btn_star_big_on));
                     flag = true;
-                   // Intent intent=new Intent(WeatherDescription.this, MainActivity.class);
-                   // intent.putExtra(Keys.KEY, city);
-                    //Log.d(TAG, "передано" + city);
                 } else {
                     imageButtonFavourites.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), android.R.drawable.btn_star_big_off));
                     flag = false;
@@ -63,42 +65,49 @@ public class WeatherDescription extends AppCompatActivity {
             }
         });
 
-        // Intent intent = getIntent();
-        // String value = intent.getStringExtra(Keys.KEY);
         city = getIntent().getStringExtra(Keys.KEY);
-        boolean pressure = getIntent().getBooleanExtra("pressure", false);
-        boolean speed=getIntent().getBooleanExtra("speed", false);
-        boolean moisture=getIntent().getBooleanExtra("moisture", false);
-
 
         if (city != null) {
             Log.d(TAG, "получено значение " + city);
             textViewCity.setText(city);
-            textViewTemperature.setText(showRandomValue() + " °");
-            if (pressure){
-                textViewPressureValue.setText(showRandomValue()  + " мм рт.ст");
-            }
-            if (speed){
-                textViewWindSpeedValue.setText(showRandomValue() + " м/c");
-            }
-            if (moisture){
-                textViewMoistureValue.setText(showRandomValue()+ " %");
-            }
-        } else {
-            Log.d(TAG, "value is null");
+            textViewTemperature.setText(String.format("%s °", showRandomValue()));
         }
+        boolean pressure = getIntent().getBooleanExtra("pressure", false);
+        boolean speed = getIntent().getBooleanExtra("speed", false);
+        boolean moisture = getIntent().getBooleanExtra("moisture", false);
+
+        manager = getSupportFragmentManager();
+
+        transaction = manager.beginTransaction();
+        if (pressure || speed || moisture) {
+
+            extraDataFragment = new ExtraDataFragment();
+            transaction.add(R.id.frame_for_extra_layout, extraDataFragment);
+            Bundle bundle = new Bundle();
+            bundle.putBoolean("pressure", pressure);
+            bundle.putBoolean("speed", speed);
+            bundle.putBoolean("moisture", moisture);
+            extraDataFragment.setArguments(bundle);
+            transaction.commit();
+
+        } else {
+            PictureFragment pictureFragment=new PictureFragment();
+            transaction.add(R.id.frame_for_extra_layout, pictureFragment);
+            transaction.commit();
+
+        }
+
 
         buttonWebSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String url =textWebSite.getText().toString();
-                Uri uri=Uri.parse(url);
-                Intent intent =new Intent(Intent.ACTION_VIEW, uri);
+                String uriStr = textWebSite.getText().toString();
+                Uri uri = Uri.parse(uriStr);
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
             }
         });
     }
-
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle saveInstanceState) {
@@ -111,6 +120,7 @@ public class WeatherDescription extends AppCompatActivity {
         saveInstanceState.putString(INSTANCE_MOISTURE, textViewMoistureValue.getText().toString());
 
     }
+
     @Override
     protected void onRestoreInstanceState(Bundle saveInstanceState) {
         super.onRestoreInstanceState(saveInstanceState);
@@ -128,9 +138,9 @@ public class WeatherDescription extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if(flag){
+        if (flag) {
             Intent intentResult = new Intent(WeatherDescription.this, MainActivity.class);
-            intentResult.putExtra("favourite_city", city);
+            intentResult.putExtra(Keys.CITY, city);
             setResult(RESULT_OK, intentResult);
             Log.d(TAG, "передано " + city);
             finish();

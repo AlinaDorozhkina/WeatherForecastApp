@@ -5,4 +5,5 @@ public class Keys {
     // чтоб другая активити не обращалась напрямую к данной активити
 
     public static final String KEY = "key";
+    public static final String CITY = "city";
 }

@@ -1,71 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@drawable/bluebackground"
     android:contentDescription="@string/addingToFavourite"
     tools:context=".WeatherDescription">
 
+
     <TextView
         android:id="@+id/textViewCity"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/common_margin_big"
         android:layout_marginTop="@dimen/common_margin"
+        android:fontFamily="@font/alice"
         android:gravity="center"
         android:text="@string/city"
         android:textColor="@color/yellow"
-        android:fontFamily="@font/alice"
-        android:textSize="@dimen/text_size_big"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        android:textSize="@dimen/text_size_big" />
 
     <ImageButton
         android:id="@+id/imageButtonFavourites"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/common_margin_big"
+        android:layout_gravity="center"
         android:background="#00ffffff"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="@dimen/common_margin_small"
+        android:contentDescription="@string/addingToFavourite"
         app:layout_constraintHorizontal_bias="0.168"
-        app:layout_constraintStart_toEndOf="@+id/textViewCity"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/btn_star_big_off"
-        android:contentDescription="@string/addingToFavourite"/>
+        app:srcCompat="@android:drawable/btn_star_big_off" />
 
     <TableLayout
         android:id="@+id/tableLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/common_margin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewCity">
+        android:layout_gravity="center">
 
         <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/textViewTemperature"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:textColor="@color/white"
-                android:textSize="@dimen/text_size_big" />
+                android:textSize="40sp" />
 
             <ImageView
                 android:id="@+id/imageViewWeatherGraphic"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_height="match_parent"
                 android:contentDescription="@null"
-                app:srcCompat="@drawable/sun" />
+                android:layout_weight="1"
+                tools:srcCompat="@drawable/sun" />
 
         </TableRow>
 
@@ -79,102 +74,22 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:fontFamily="@font/alice"
                 android:text="@string/weather_description"
                 android:textColor="@color/white"
-                android:textSize="@dimen/text_size_average" />
+                android:fontFamily="@font/alice"
+                android:textSize="25sp" />
 
         </TableRow>
 
     </TableLayout>
 
-    <TableLayout
-        android:id="@+id/tableloyout_extra"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/common_margin"
-        app:layout_constraintTop_toBottomOf="@id/tableLayout"
-        tools:layout_editor_absoluteX="20dp">
-
-        <TableRow
-            android:id="@+id/raw_air_pressure"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/textViewPressure"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/air_pressure"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_size_small" />
-
-            <TextView
-                android:id="@+id/textViewPressureValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="@dimen/text_size_small"
-                android:textColor="@color/white" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/raw_wind_speed"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/textViewSpeed"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/window_speed_checkbox"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_size_small" />
-
-            <TextView
-                android:id="@+id/textViewWindSpeedValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:layout_weight="1"
-                android:textSize="@dimen/text_size_small"/>
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/raw_moisture"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/textViewMoisture"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/atmospheric_moisture"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_size_small" />
-
-            <TextView
-                android:id="@+id/textViewMoistureValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_size_small"/>
-        </TableRow>
-
-    </TableLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@id/tableloyout_extra"
-        android:layout_margin="@dimen/common_margin"
+        android:layout_margin="@dimen/common_margin_small"
         >
-
-
 
 
     <TextView
@@ -184,6 +99,7 @@
         android:gravity="center_horizontal"
         android:layout_gravity="center"
         android:textSize="@dimen/text_size_small"
+        android:fontFamily="@font/alice"
         android:layout_height="wrap_content"
         android:text="@string/web_weather"
         android:textColor="@color/yellow"/>
@@ -192,13 +108,22 @@
             android:id="@+id/buttonWebSearch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
             android:layout_gravity="center"
             android:layout_weight="0.5"
-            android:textSize="@dimen/text_size_super_small"
+            android:backgroundTint="@color/blues"
+            android:gravity="center_horizontal"
             android:text="@string/web_open_button"
-            android:backgroundTint="@color/blues"/>
+            android:textColor="@color/white"
+            android:fontFamily="@font/alice"
+            android:textSize="@dimen/text_size_super_small" />
 
     </LinearLayout>
+    <FrameLayout
+        android:id="@+id/frame_for_extra_layout"
+        android:layout_width="match_parent"
+        android:layout_height="140dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+
+</LinearLayout>

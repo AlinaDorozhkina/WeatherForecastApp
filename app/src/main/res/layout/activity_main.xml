@@ -1,159 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bluebackground"
     tools:context=".MainActivity">
 
-    <ScrollView
+
+    <fragment
+        android:id="@+id/main_functions_fragment"
+        android:name="com.example.weatherforecastapp.MainFunctionsFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/bluedark"
-        >
-        <LinearLayout
-            android:id="@+id/liner_main"
+        android:layout_height="wrap_content"
+        tools:layout="@layout/layout_main_functions">
+
+    </fragment>
+
+
+            <fragment
+                android:id="@+id/fragment_pic"
+                android:name="com.example.weatherforecastapp.PictureFragment"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                tools:layout="@layout/layout_for_picture">
+
+            </fragment>
+    <LinearLayout
+        android:id="@+id/liner_for_favourites_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <fragment
+            android:name="com.example.weatherforecastapp.FavouritesFragment"
+            android:id="@+id/favourites_cities_fragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            tools:layout="@layout/fragment_favourites">
 
-            <TextView
-                android:id="@+id/textViewInfo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/common_margin"
-                android:fontFamily="@font/alice"
-                android:text="@string/choose_city"
-                android:textColor="@color/yellow"
-                android:textSize="@dimen/text_size_average"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.497"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_gravity="center"
-                >
+        </fragment>
 
-            </TextView>
-            <AutoCompleteTextView
-                android:id="@+id/autoCompleteTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/enter_city"
-                android:textColorHint="@color/white"
-                android:textColor="@color/white"
-                android:layout_margin="@dimen/common_margin"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewInfo">
-            </AutoCompleteTextView>
-            <TextView
-                android:id="@+id/textViewExtra"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/alice"
-                android:text="@string/extras"
-                android:textColor="@color/yellow"
-                android:textSize="@dimen/text_size_average"
-                android:layout_margin="@dimen/common_margin"
-                android:layout_gravity="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView">
-            </TextView>
+    </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/linearLayout2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/common_margin"
-                android:layout_gravity="center"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewExtra">
 
-                <CheckBox
-                    android:id="@+id/pressure"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="@color/white"
-                    android:text="@string/air_pressure" />
 
-                <CheckBox
-                    android:id="@+id/speed"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="@color/white"
-                    android:text="@string/window_speed_checkbox" />
 
-                <CheckBox
-                    android:id="@+id/moisture"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="@color/white"
-                    android:text="@string/atmospheric_moisture" />
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linerPicture"
-                android:layout_width="wrap_content"
-                android:layout_height="140dp"
-                android:layout_marginTop="@dimen/text_size_small"
-                android:background="@drawable/picallweather2"
-                android:orientation="vertical"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
-
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/button_show"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/show_button"
-                android:textSize="@dimen/text_size_small"
-                android:layout_marginTop="@dimen/common_margin"
-                android:fontFamily="@font/alice"
-                android:backgroundTint="@color/blues"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageViewPicture">
-
-            </Button>
-            <TextView
-                android:id="@+id/textViewPopularCities"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/alice"
-                android:text="@string/pop_city"
-                android:textColor="@color/yellow"
-                android:layout_margin="@dimen/common_margin"
-                android:textSize="@dimen/text_size_average"
-                android:layout_gravity="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button_show">
-
-            </TextView>
-
-                <Button
-                    android:id="@+id/buttonMoscow"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/moscow"
-                    android:fontFamily="@font/alice"
-                    android:textSize="@dimen/text_size_small"
-                    android:backgroundTint="@color/blues"
-                    />
-
-            </LinearLayout>
-
-    </ScrollView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -2,10 +2,12 @@ package com.example.weatherforecastapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -24,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
     private CheckBox speed;
     private CheckBox moisture;
     private LinearLayout liner_main;
+    private LinearLayout linerForFavourites;
+    private FragmentManager manager;
+    private FragmentTransaction transaction;
 
 
     @Override
@@ -37,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         speed = findViewById(R.id.speed);
         moisture = findViewById(R.id.moisture);
         liner_main = findViewById(R.id.liner_main);
+        linerForFavourites = findViewById(R.id.linerForFavourites);
 
         Button button_show = findViewById(R.id.button_show);
         button_show.setOnClickListener(new View.OnClickListener() {
@@ -78,7 +84,22 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode != REQUEST_CODE) {
+            super.onActivityResult(requestCode, resultCode, data);
+            return;
+        }
 
+        if (resultCode == RESULT_OK) {
+            Log.d(TAG, " получено значение из другой активити " + data.getStringExtra(Keys.CITY));
+            Fragment fragment=new FavouritesFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString("city1", data.getStringExtra(Keys.CITY));
+            fragment.setArguments(bundle);
+            Log.d(TAG, "передано во фрагмент " + fragment.getClass().getSimpleName() + data.getStringExtra(Keys.CITY));
+        }
+    }
 
     @Override
     protected void onStart() {
@@ -141,31 +162,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "onDestroy()");
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode != REQUEST_CODE) {
-            Log.d(TAG, "requestCode != REQUEST_CODE " + requestCode);
-            super.onActivityResult(requestCode, resultCode, data);
-            return;
-        }
 
-        if (resultCode == RESULT_OK) {
-            Log.d(TAG, " получено значение из другой активити " + data.getStringExtra("favourite_city"));
-            Button button = new Button(this);
-            button.setText(data.getStringExtra("favourite_city"));
-            int backgroundColor = ContextCompat.getColor(this, R.color.blues);
-            int textColor = ContextCompat.getColor(this, R.color.white);
-            button.setBackgroundColor(backgroundColor);
-            button.setTextColor(textColor);
-            //button.setTextSize(R.dimen.text_size_average);
-            button.setTextColor(textColor);
-            Typeface typeface=getResources().getFont(R.font.alike);
-            button.setTypeface(typeface);
-            liner_main.addView(button);
-
-
-        }
-    }
 
 
 }
